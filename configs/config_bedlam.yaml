@@ -1,0 +1,54 @@
+LOGDIR: ''
+DEVICE: 'cuda'
+OUTPUT_DIR: 'results'
+NUM_WORKERS: 12
+SEED_VALUE: 0
+IMG_RES: 256
+
+DATASET:
+  LIST: ['bedlam', 'agora']
+  PARTITION: [0.95, 0.05]
+
+LOSS:
+  KPT2D: 5.0
+  KPT3D: 5.0
+  SMPL: 1.0
+  V3D: 1.0
+
+
+TRAIN:
+  RESUME: None
+  LOAD_LATEST: True
+  BATCH_SIZE: 64
+  LR: 1e-4
+  START_EPOCH: 0
+  END_EPOCH: 100
+  SUMMARY_STEP: 10
+  VALID_STEP: 100
+  SAVE_STEP: 5000
+  MAX_STEP: 200000
+  GAMMA: 0.85
+  UPDATE_ITER: 5
+  CLIP_GRADIENT: True
+  CLIP_NORM: 4.0
+  MASKED_PROB: 0.25
+  WD: 0.0
+  OPT: 'Adam'
+  
+
+MODEL:
+  RADIUS: 3
+  POINT_DIM: 1
+  LOCAL_DIM: 256
+  HIDDEN_DIM: 32
+  CORR_LAYER: 2
+  REG_LAYER: 1
+  BACKBONE: 'hrnet_w48'
+  PTYPE: 'marker'
+  VERSION: 'refit'
+
+EXP_NAME: 'refit_bedlam'
+COMMENT:
+  'Default ReFit configs, bedlam+agora, + vertice loss'
+
+
