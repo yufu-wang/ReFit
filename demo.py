@@ -15,15 +15,15 @@ from lib.yolo import Yolov7
 
 
 # Yolo model
-DEVICE = 'cpu'
+DEVICE = 'cuda' if torch.cuda.is_available() else 'cpu'
 yolo = Yolov7(device=DEVICE, weights='data/pretrain/yolov7-e6e.pt', imgsz=1281)
 
 # ReFit
 args = ['--cfg', 'configs/config.yaml']
 cfg = parse_args(args)
-cfg.DEVICE = 'cpu'
+cfg.DEVICE = DEVICE
 
-model = get_model(cfg)
+model = get_model(cfg).to(DEVICE)
 checkpoint = 'data/pretrain/refit_all/checkpoint_best.pth.tar'
 state_dict = torch.load(checkpoint, map_location=cfg.DEVICE)
 _ = model.load_state_dict(state_dict['model'], strict=False)
@@ -35,7 +35,6 @@ smpl = SMPL()
 renderer_img = Renderer_img(smpl.faces, color=(0.40,  0.60,  0.9, 1.0))
 
 # Example image
-# imgname = 'data/examples/skates.png'
 imgfiles = sorted(glob('data/examples/*'))
 for imgname in tqdm(imgfiles):
     img = cv2.imread(imgname)[:,:,::-1].copy()
@@ -43,6 +42,7 @@ for imgname in tqdm(imgfiles):
     ### --- Detection ---
     with torch.no_grad():
         boxes = yolo(img, conf=0.50, iou=0.45)
+        boxes = boxes.cpu().numpy()
         
     db = DetectDataset(img, boxes)
     dataloader = torch.utils.data.DataLoader(db, batch_size=8, shuffle=False, num_workers=0)
@@ -50,17 +50,16 @@ for imgname in tqdm(imgfiles):
     ### --- ReFit ---
     vert_all = []
     for batch in dataloader:
+        batch = {k: v.to(DEVICE) for k, v in batch.items() if type(v)==torch.Tensor}
         with torch.no_grad():
             out, preds = model(batch, iters=5)
             s_out = model.smpl.query(out)
             vertices = s_out.vertices
 
-        vert = vertices
-        trans = out['trans_full']
-        vert_full = vert + trans
+        vert_full = vertices + out['trans_full']
         vert_all.append(vert_full)
         
-    vert_all = torch.cat(vert_all)
+    vert_all = torch.cat(vert_all).cpu()
 
     ### --- Render ---
     img_render = renderer_img(vert_all, [0,0,0], img)
