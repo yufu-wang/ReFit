@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 ## Prepare data
 There are some few key data you need for the demo, training and evaluation.
-1. [SMPL](https://smpl.is.tue.mpg.de): Please donwload <strong>SMPL_NEUTRAL/FEMALE/MALE.pkl</strong> and put them under `data/smpl`
+1. [SMPL](https://smpl.is.tue.mpg.de): Please download <strong>SMPL_NEUTRAL/FEMALE/MALE.pkl</strong> and put them under `data/smpl`
 2. [ReFit weights](https://drive.google.com/drive/folders/1B5V_CiCxwmsnJBGJJjJiLqcRHA6glWxx?usp=share_link): download each checkpoint folders and put them under `data/pretrain`
 3. [Yolov7](https://github.com/WongKinYiu/yolov7/releases/download/v0.1/yolov7-e6e.pt): for detection, download this Yolov7 checkpoint and put it under `data/pretrain`. Be sure to also clone the yolov7 submodule with `git clone --recurse-submodules this-repo`.
 
