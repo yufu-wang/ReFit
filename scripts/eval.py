@@ -71,7 +71,7 @@ for batch in tqdm(data_loader):
     evaluator(gt_keypoints_3d, pred_keypoints_3d, '3dpw', gt_verts, pred_vertices)
 
 
-print('Restuls for model')
+print('Results for model')
 evaluator.log()
 print()
 
