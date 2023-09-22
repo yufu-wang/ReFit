@@ -110,7 +110,7 @@ for batch in tqdm(data_loader):
     evaluator(gt_keypoints_3d, pred_keypoints_3d, '3dpw', gt_verts, pred_vertices)
 
 
-print('Restuls for model H36M')
+print('Results for model H36M')
 evaluator.log()
 print()
 
