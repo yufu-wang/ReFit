@@ -41,7 +41,7 @@ def get_trained_model(cfg):
         print('Loaded model from', checkpoint_file)
     else:
         print('No checkpoint from', checkpoint_file)
-        print('Loaded randomly initialied model.')
+        print('Loaded randomly initialized model.')
 
 
     return model
