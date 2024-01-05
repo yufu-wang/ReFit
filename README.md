@@ -5,8 +5,11 @@ Code repository for the paper: \
 ICCV 2023 \
 [[Project Page](https://yufu-wang.github.io/refit_humans/)]
 
-<img src="data/method.png" width="800">
+<img src="data/method.png" width="700">
 
+## Updates
+2024-01-05: Added an example for [multiview](scripts/multiview_demo.py) refit. <br>
+2023-12-20: Added support for [GART](https://github.com/JiahuiLei/GART) with a [preprocessing](scripts/process_folder.py) script.<br>
 
 ## Installation instructions
 ```
@@ -29,6 +32,14 @@ Additionally for training and evaluation, please follow the dataset preparation 
 We provide a few examples in `data/examples`. Running the following demo will detect each person in each image and then run ReFit for 3D reconstruction. The resulting rendering will be saved.
 ```
 python demo.py
+```
+For multiview refit, run the following demo
+```
+python scripts/multiview_demo.py
+```
+To run on a folder of images (eg. frames from a video), and save the SMPL and camera pose for [GART](https://github.com/JiahuiLei/GART), run the following. 
+```
+python scripts/process_folder.py
 ```
 
 ## Training and evaluation
