@@ -58,9 +58,10 @@ class BaseDataset(Dataset):
         self.sc = 1.0
         
         # If False, do not do augmentation
-        self.use_augmentation = use_augmentation
-        self.occluders = joblib.load(PASCAL_OCCLUDERS)
         self.cropped = cropped
+        self.use_augmentation = use_augmentation
+        if use_augmentation:
+            self.occluders = joblib.load(PASCAL_OCCLUDERS) 
 
         if self.cropped:
             self.orig_shape = self.data['orig_shape']

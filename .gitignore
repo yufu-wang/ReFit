@@ -1,5 +1,6 @@
 __pycache__/
 .DS_Store
+*.ipynb
 data/pretrain/
 data/smpl/SMPL_FEMALE.pkl
 data/smpl/SMPL_MALE.pkl

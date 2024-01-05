@@ -20,6 +20,7 @@ DATASET_NPZ_PATH = 'data/dataset_extras'
 # Path to test/train npz files
 DATASET_FILES = [ {'3dpw_test': join(DATASET_NPZ_PATH, '3dpw_test.npz'),
                    '3dpw_test_sub': join(DATASET_NPZ_PATH, '3dpw_test_sub.npz'),
+                   'multiview_examples': 'data/examples/multiview_examples/multiview_examples.npz',
                   },
 
                   {'coco': join(DATASET_NPZ_PATH, 'coco_2014_eft.npz'),
@@ -40,7 +41,8 @@ DATASET_FOLDERS = {'h36m': H36M_ROOT,
                    '3dpw_test': PW3D_ROOT,
                    '3dpw_test_sub': PW3D_ROOT,
                    'bedlam': BEDLAM_ROOT,
-                   'agora': AGORA_ROOT
+                   'agora': AGORA_ROOT,
+                   'multiview_examples': '.'
                 }
 
 
