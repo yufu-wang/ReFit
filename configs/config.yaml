@@ -6,7 +6,7 @@ SEED_VALUE: 0
 IMG_RES: 256
 
 DATASET:
-  LIST: ['coco', 'mpii', 'mpi3d_80', 'h36m', '3dpw']
+  LIST: ['coco', 'mpii', 'mpi-inf-3dhp', 'h36m', '3dpw']
   PARTITION: [0.25, 0.05, 0.1, 0.4, 0.2]
 
 LOSS:

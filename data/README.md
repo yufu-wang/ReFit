@@ -19,7 +19,7 @@ After downloading the above datasets from their website, please edit the `data_c
 
 
 ### dataset_extras
-We have preprocessed the annotations for the following datasets that are used for training. They are in the same format consistent with SPIN. You can download them from [GoogleDrive](https://drive.google.com/drive/folders/15VPl12vRTkMD-mJzbRJUokKP-Kb0eDM_?usp=share_link) and put them under `data/dataset_extras`.<br>
+We have preprocessed the annotations for the following datasets that are used for training. They are in the same format consistent with SPIN. You can download them from [GoogleDrive](https://drive.google.com/drive/folders/1_yckPZcuEjo0m3UYtvzr9J_c3nLGRiD0?usp=share_link) and put them under `data/dataset_extras`.<br>
 The datasets include: **COCO-EFT**, **MPII-EFT**, **MPI-INF-3DHP**, **3DPW**, **AGORA** and **BEDLAM**. <br>
 The only annotation we cannot provide is for **H36M** (from MoSH). However, we plan to release proxy fits from the Multi-view ReFit procedure, that hopefully will still boost training when the MoSH fits are not available. 
 
