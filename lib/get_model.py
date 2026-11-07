@@ -36,7 +36,7 @@ def get_trained_model(cfg):
 
     checkpoint_file = 'results/refit_{}/checkpoint_best.pth.tar'.format(cfg_id)
     if os.path.exists(checkpoint_file):
-        checkpoint = torch.load(checkpoint_file, map_location=cfg.DEVICE)
+        checkpoint = torch.load(checkpoint_file, map_location=cfg.DEVICE, weights_only=True)
         _ = model.load_state_dict(checkpoint['model'], strict=False)
         print('Loaded model from', checkpoint_file)
     else:
